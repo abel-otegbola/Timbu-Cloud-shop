@@ -25,12 +25,14 @@ export default function Home () {
 
             <Header />
 
-            <div className="flex items-center md:justify-between md:flex-nowrap flex-wrap gap-6 px-[5%] font-medium py-8">
-                {
-                    [categories.map(item => (
-                        <Link key={item.id} to={"/?cat="+ item.title} className={`${ cat === item.title ? "underline font-bold" : "" }`}>{item.title}</Link>
-                    ))]
-                }
+            <div className="overflow-x-auto px-[5%]">   
+                <div className="flex items-center md:justify-between flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
+                    {
+                        [categories.map(item => (
+                            <Link key={item.id} to={"/?cat="+ item.title} className={` ${ cat === item.title ? "underline font-bold" : "" }`}>{item.title}</Link>
+                        ))]
+                    }
+                </div>
             </div>
 
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 p-6 gap-4">
