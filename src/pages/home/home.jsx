@@ -2,11 +2,13 @@ import { Link, useSearchParams } from "react-router-dom";
 import Header from "../../components/header/header";
 import Quotes from "../../components/quotes/quotes";
 import { books } from "../../data/books";
+import BookCard from "../../components/bookCard/bookCard";
 
 export default function Home () {
     const [ searchParams ] = useSearchParams()
 
     const cat = searchParams.get("cat") || "Non-Fiction"
+    const search = searchParams.get("search") || ""
 
     const categories = [
         { id: 0, title: "Non-Fiction" },
@@ -37,16 +39,16 @@ export default function Home () {
 
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 p-6 gap-4">
                 {
-                    books.map(book => (
-                        <Link key={book.id} className="flex flex-col gap-2" to={"/book/"+ book.title}>
-                            <img src={book.img} alt={book.title} width={"100%"} className="rounded-[15px]" />
-                            <p className="opacity-[0.7]">{book.category}</p>
-                            <p className="text-primary font-semibold">{book.title}</p>
-                            <p className="font-semibold">#{book.price}</p>
-                            <button className="bg-secondary p-2 w-full rounded-[10px] text-[#262626] font-bold">Add To Cart</button>
-                        </Link>
+                    books.filter(item => item.title.indexOf(search) !== -1).map(book => (
+                        <BookCard key={book.id} book={book} />
                     ))
                 }
+            </div>
+
+            <div className="flex items-center justify-center gap-4 py-8">
+                <button className="p-2 px-5 rounded-[15px] bg-primary text-white">1</button>
+                <button className="p-2 px-5 rounded-[15px] bg-[#DDD] text-black">2</button>
+                <button className="font-semibold">Next</button>
             </div>
         </div>
     )
