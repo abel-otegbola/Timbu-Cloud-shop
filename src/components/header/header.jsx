@@ -12,9 +12,9 @@ export default function Header() {
                 Categories
             </button>
 
-            <div className="flex items-center border-2 border-primary flex-1 lg:w-auto w-full rounded-[15px] lg:order-1 order-1">
-                <input type="search" className="p-3 flex-1 rounded-[15px] outline-none px-12" placeholder="Search Books, Authors, Categories" />
-                <button className="bg-primary text-white rounded-r-[10px] rounded-l-[12px] py-1 px-[25px]">
+            <div className="flex items-center border-2 border-primary lg:flex-1 lg:w-auto w-full rounded-[15px] lg:order-1 order-1">
+                <input type="search" className="p-3 flex-1 rounded-[15px] outline-none px-[3%]" placeholder="Search Books, Authors, Categories" />
+                <button className="flex bg-primary text-white justify-center w-[75px] rounded-r-[10px] rounded-l-[12px] py-1">
                     <SearchIcon className={"w-[25px]"}/>
                 </button>
             </div>
