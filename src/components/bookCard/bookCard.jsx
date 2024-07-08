@@ -14,7 +14,7 @@ export default function BookCard({ book }) {
     }
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 md:text-[16px] text-[13px]">
             <img src={book.img} alt={book.title} width={"100%"} className="rounded-[15px]" />
             <p className="opacity-[0.7]">{book.category}</p>
             <p className="text-primary font-semibold">{book.title}</p>
