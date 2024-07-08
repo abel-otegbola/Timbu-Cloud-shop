@@ -7,7 +7,7 @@ import GmailIcon from "../../assets/icons/gmailIcon";
 
 export default function Footer() {
     return (
-        <footer className="flex flex-wrap gap-[5%] p-[7%] bg-primary text-white mt-4">
+        <footer className="flex flex-wrap md:gap-[5%] p-[7%] bg-primary text-white mt-4 gap-10">
             <div className="md:w-[20%] w-full flex flex-col gap-1">
                 <h2 className="font-bold mb-3 text-lg">Our Address</h2>
                 <p>47, Real Trench, Trench Town, Port Harcourt, Nigeria</p>

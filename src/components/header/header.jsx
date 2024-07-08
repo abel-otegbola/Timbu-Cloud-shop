@@ -34,7 +34,7 @@ export default function Header() {
                     My Cart
                 </button>
 
-                <div className={`${openCart ? "block" : "hidden"} absolute top-[100%] right-0 md:w-[400px] w-[250px] py-[46px] px-3 bg-white shadow-lg rounded-[10px] z-[3]`}>
+                <div className={`${openCart ? "block" : "hidden"} absolute top-[100%] right-0 md:w-[400px] w-[250px] py-[46px] px-3 bg-white shadow-lg rounded-[10px] z-[1]`}>
                     <CardOverlay />
                 </div>
             </div>
