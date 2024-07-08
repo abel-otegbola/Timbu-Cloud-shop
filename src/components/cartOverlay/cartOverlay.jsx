@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../context/cartContext";
 import { useContext } from "react";
 
-export default function CardOverlay() {
+export default function CartOverlay() {
     const { cart, setCart } = useContext(CartContext)
 
     return (
-        <div className="">
+        <div className="md:w-[400px] w-[300px] py-6 px-3 bg-white shadow-lg rounded-[10px] ">
             <h2 className="py-4 md:text-[30px] text-[24px] text-center">My Cart</h2>
 
             <div className="flex flex-col gap-2">
@@ -16,7 +16,7 @@ export default function CardOverlay() {
                             <img src={book.img} alt={book.title} width={87} className="rounded-[5px]" />
                             <div className="flex-1 flex flex-col justify-betwween py-4 gap-2">
                                 <p className="opacity-[0.7]">{book.title}</p>
-                                <p className="text-primary font-semibold">1 x #{book.price}.00</p>
+                                <p className="text-primary font-semibold">{book.quantity || 1} x #{book.price}.00</p>
                             </div>
                         </Link>
                     ))
@@ -31,9 +31,12 @@ export default function CardOverlay() {
             <button className="bg-secondary p-2 w-full rounded-[10px] text-[#262626] font-bold mb-4" onClick={() => setCart([])}>
                 Remove Items
             </button>
-            <button className="bg-secondary p-2 w-full rounded-[10px] text-[#262626] font-bold" >
+            <Link to={"/cart"} className="block mb-4 text-center bg-secondary p-2 w-full rounded-[10px] text-[#262626] font-bold" >
+                View Cart
+            </Link>
+            <Link to={"/checkout"} className="block text-center bg-secondary p-2 w-full rounded-[10px] text-[#262626] font-bold" >
                 Check Out
-            </button>
+            </Link>
         </div>
     )
 }
