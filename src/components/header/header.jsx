@@ -11,16 +11,16 @@ export default function Header() {
     const [openCart, setOpenCart] = useState(false)
 
     return (
-        <div className="flex items-center justify-between w-full px-[5%] py-4 lg:gap-[8%] gap-6 font-semibold border-2 border-transparent border-b-primary">
+        <div className="flex items-center justify-between w-full px-[5%] py-4 lg:gap-[8%] sm:gap-6 gap-2 font-semibold border-2 border-transparent border-b-primary">
             <button className="flex items-center gap-1">
                 <MenuIcon className="sm:w-[40px] w-[30px]"/>
                 <span className="sm:block hidden">Categories</span>
             </button>
 
-            <form className="flex items-center border-2 border-primary lg:flex-1 min-[400px]:w-[55%] rounded-[15px]">
-                <input type="search" name="search" onChange={(e) => setQuery(e.target.value)} className="p-3 max-[400px]:w-[75%] flex-1 w-[75%] rounded-[15px] outline-none px-[3%]" placeholder="Search Books, Authors, Categories" />
-                <button className="flex bg-primary text-white justify-center w-[75px] rounded-r-[10px] rounded-l-[12px] py-[6px]">
-                    <SearchIcon className={"sm:w-[25px] w-[20px]"}/>
+            <form className="flex items-center md:text-[16px] text-[12px] border-2 border-primary lg:flex-1 min-[400px]:w-[60%] rounded-[15px]">
+                <input type="search" name="search" onChange={(e) => setQuery(e.target.value)} className="sm:p-3 p-2 max-[400px]:w-[75%] flex-1 w-[75%] rounded-[15px] outline-none px-[3%]" placeholder="Search Books, Authors, Categories" />
+                <button className="flex bg-primary text-white justify-center sm:w-[75px] w-[59px] rounded-r-[10px] rounded-l-[12px] md:py-[6px] py-[2px]">
+                    <SearchIcon className={"sm:w-[25px] w-[18px]"}/>
                 </button>
             </form>
 
