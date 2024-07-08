@@ -20,7 +20,7 @@ export default function Topbar () {
                     <Link to={"/help"} className="p-4 py-2 hover:text-primary">Help</Link>
                 </div>
 
-                <Link to={"/login"} className="p-3 px-6 rounded-[20px] border-2 font-medium border-secondary text-secondary">Login</Link>
+                <Link to={"/login"} className="p-3 px-6 rounded-[20px] border-2 font-medium border-secondary text-secondary hover:bg-primary hover:text-white">Login</Link>
             </div>
 
             <button className="flex flex-col gap-1 lg:hidden z-[11] h-[50px] py-4" onClick={() => setOpen(!open)}>
