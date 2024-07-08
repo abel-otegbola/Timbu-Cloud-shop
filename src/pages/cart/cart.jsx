@@ -35,7 +35,7 @@ export default function Cart() {
                                         <td className="text-primary font-semibold">#{book.price}</td>
                                         <td className="text-primary font-semibold items-start">
                                             <button className="text-lg w-[40px] h-[67px] bg-[#DDD]">-</button>
-                                            <input type="number" className="h-full w-[55px] text-center bg-white" defaultValue={book.quantity || 1} />
+                                            <input type="text" className="h-full w-[55px] text-center bg-white" defaultValue={book.quantity || 1} />
                                             <button className="text-lg w-[40px] h-[67px] bg-[#DDD]">+</button>
                                         </td>
                                         <td className="text-primary font-semibold">#{book.quantity ? book.price * book.quantity : book.price}</td>
