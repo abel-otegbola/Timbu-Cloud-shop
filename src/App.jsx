@@ -1,11 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import CartContextProvider from './context/cartContext'
 
-// pages
-import Home from './pages/home/home'
+// Components
 import Topbar from './components/topbar/topbar'
 import Footer from './components/footer/footer'
-import CartContextProvider from './context/cartContext'
+
+// Pages
+import Home from './pages/home/home'
 import Cart from './pages/cart/cart'
+import Checkout from './pages/checkout/checkout'
 
 function App() {
 
@@ -16,6 +19,7 @@ function App() {
         <Routes>
           <Route path={"/"} exact element={<Home />} />
           <Route path={"/cart"} exact element={<Cart />} />
+          <Route path={"/checkout"} exact element={<Checkout />} />
         </Routes>
         <Footer />
       </BrowserRouter>
