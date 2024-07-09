@@ -16,17 +16,16 @@ export default function Header() {
     const pathname = useLocation().pathname;
 
     const cartRef = useOutsideClick(setOpenCart)
-    const wishlistRef = useOutsideClick(setOpenWishlist)
     const categoriesRef = useOutsideClick(setOpenCategories)
 
     return (
-        <div className="relative flex items-center justify-between w-full px-[7%] py-4 lg:gap-[8%] sm:gap-6 gap-2 font-semibold border-2 border-transparent border-b-primary">
+        <div ref={categoriesRef} className="relative flex items-center justify-between w-full px-[7%] py-4 lg:gap-[8%] sm:gap-6 gap-2 font-semibold border-2 border-transparent border-b-primary">
             <button className="flex items-center gap-1 hover:text-primary" onClick={() => setOpenCategories(!openCategories)}>
                 <MenuIcon className="sm:w-[40px] w-[30px]"/>
                 <span className="sm:block hidden">Categories</span>
             </button>
 
-            <div ref={categoriesRef} className={`${openCategories ? "block" : "hidden"} absolute top-[100%] leftt-0 z-[1]`}>
+            <div className={`${openCategories ? "block" : "hidden"} absolute top-[100%] leftt-0 z-[1]`}>
                 <CategoriesOverlay />
             </div>
 
@@ -37,12 +36,12 @@ export default function Header() {
                 </button>
             </form>
 
-            <div className="relative flex items-center gap-8">
+            <div ref={cartRef} className="relative flex items-center gap-8">
                 <button className="flex items-center gap-2 hover:text-primary" onClick={() => setOpenWishlist(!openWishlist)}>
                     <BagIcon className="w-[20px]"/>
                     <span className="md:block hidden">Wishlist</span>
                 </button>
-                <div ref={wishlistRef} className={`${openWishlist ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
+                <div className={`${openWishlist ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
                     <WishlistOverlay />
                 </div>
 
@@ -50,7 +49,7 @@ export default function Header() {
                     <CartIcon className="w-[20px]"/>
                     <span className="md:block hidden">My Cart</span>
                 </button>
-                <div ref={cartRef} className={`${openCart ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
+                <div className={`${openCart ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
                     <CartOverlay />
                 </div>
             </div>
