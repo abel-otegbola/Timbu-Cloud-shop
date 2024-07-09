@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import { CartContext } from "../../context/cartContext";
+import Skeleton from "../skeletonLoader/skeletonLoader";
 
 export default function BookCard({ book }) {
     const { cart, setCart } = useContext(CartContext)
@@ -15,7 +16,9 @@ export default function BookCard({ book }) {
 
     return (
         <div className="flex flex-col gap-2 md:text-[16px] text-[13px]">
-            <img src={book.img} alt={book.title} width={"100%"} className="rounded-[15px]" />
+            <Suspense fallback={<Skeleton/>}>
+                <img src={book.img} alt={book.title} width={"100%"} className="rounded-[15px]" />
+            </Suspense>
             <p className="opacity-[0.7]">{book.category}</p>
             <p className="text-primary font-semibold">{book.title}</p>
             <p className="font-semibold">#{book.price}</p>
