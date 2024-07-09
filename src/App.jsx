@@ -9,20 +9,23 @@ import Footer from './components/footer/footer'
 import Home from './pages/home/home'
 import Cart from './pages/cart/cart'
 import Checkout from './pages/checkout/checkout'
+import WishlistContextProvider from './context/wishlistContext'
 
 function App() {
 
   return (
     <CartContextProvider>
-      <BrowserRouter>
-        <Topbar />
-        <Routes>
-          <Route path={"/"} exact element={<Home />} />
-          <Route path={"/cart"} exact element={<Cart />} />
-          <Route path={"/checkout"} exact element={<Checkout />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <WishlistContextProvider>
+        <BrowserRouter>
+          <Topbar />
+          <Routes>
+            <Route path={"/"} exact element={<Home />} />
+            <Route path={"/cart"} exact element={<Cart />} />
+            <Route path={"/checkout"} exact element={<Checkout />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </WishlistContextProvider>
     </CartContextProvider>
   )
 }

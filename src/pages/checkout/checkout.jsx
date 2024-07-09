@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Header from "../../components/header/header";
 import { CartContext } from "../../context/cartContext";
 import { useContext } from "react";
-import ArrowIcon from "../../assets/icons/arrowIcon";
 
 export default function Checkout() {
     const { cart } = useContext(CartContext)
