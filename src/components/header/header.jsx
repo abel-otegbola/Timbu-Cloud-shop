@@ -7,13 +7,17 @@ import { useState } from "react";
 import CartOverlay from "../cartOverlay/cartOverlay";
 import CategoriesOverlay from "../categoriesOverlay/categoriesOverlay";
 import WishlistOverlay from "../wishlistOverlay/wishlistOverlay";
+import { useOutsideClick } from "../../customHooks/useClickOutside";
 
 export default function Header() {
-    const [query, setQuery] = useState("")
     const [openCart, setOpenCart] = useState(false)
     const [openWishlist, setOpenWishlist] = useState(false)
     const [openCategories, setOpenCategories] = useState(false)
     const pathname = useLocation().pathname;
+
+    const cartRef = useOutsideClick(setOpenCart)
+    const wishlistRef = useOutsideClick(setOpenWishlist)
+    const categoriesRef = useOutsideClick(setOpenCategories)
 
     return (
         <div className="relative flex items-center justify-between w-full px-[7%] py-4 lg:gap-[8%] sm:gap-6 gap-2 font-semibold border-2 border-transparent border-b-primary">
@@ -22,12 +26,12 @@ export default function Header() {
                 <span className="sm:block hidden">Categories</span>
             </button>
 
-            <div className={`${openCategories ? "block" : "hidden"} absolute top-[100%] leftt-0 z-[1]`}>
+            <div ref={categoriesRef} className={`${openCategories ? "block" : "hidden"} absolute top-[100%] leftt-0 z-[1]`}>
                 <CategoriesOverlay />
             </div>
 
             <form className="flex items-center md:text-[16px] text-[12px] border-2 border-primary lg:flex-1 min-[400px]:w-[60%] rounded-[15px]">
-                <input type="search" name="search" onChange={(e) => setQuery(e.target.value)} className="sm:p-3 p-2 max-[400px]:w-[75%] max-[400px]:p-1 flex-1 w-[75%] rounded-[15px] outline-none px-[3%]" placeholder="Search Books, Authors, Categories" />
+                <input type="search" name="search" className="sm:p-3 p-2 max-[400px]:w-[75%] max-[400px]:p-1 flex-1 w-[75%] rounded-[15px] outline-none px-[3%]" placeholder="Search Books, Authors, Categories" />
                 <button className="flex bg-primary hover:bg-primary/[0.8] text-white justify-center sm:w-[75px] w-[59px] rounded-r-[10px] rounded-l-[12px] md:py-[6px] py-[4px]">
                     <SearchIcon className={"sm:w-[25px] w-[18px]"}/>
                 </button>
@@ -38,7 +42,7 @@ export default function Header() {
                     <BagIcon className="w-[20px]"/>
                     <span className="md:block hidden">Wishlist</span>
                 </button>
-                <div className={`${openWishlist ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
+                <div ref={wishlistRef} className={`${openWishlist ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
                     <WishlistOverlay />
                 </div>
 
@@ -46,7 +50,7 @@ export default function Header() {
                     <CartIcon className="w-[20px]"/>
                     <span className="md:block hidden">My Cart</span>
                 </button>
-                <div className={`${openCart ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
+                <div ref={cartRef} className={`${openCart ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
                     <CartOverlay />
                 </div>
             </div>
