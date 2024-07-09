@@ -16,8 +16,6 @@ export default function Topbar () {
                     <Link to={"/"} className="p-4 py-2 hover:text-primary">Shop</Link>
                     <Link to={"/"} className="p-4 py-2 hover:text-primary">About Us</Link>
                     <Link to={"/"} className="p-4 py-2 hover:text-primary">Contact Us</Link>
-                    <Link to={"/"} className="p-4 py-2 hover:text-primary">Subscription</Link>
-                    <Link to={"/"} className="p-4 py-2 hover:text-primary">Help</Link>
                 </div>
 
                 <Link to={"/"} className="p-3 px-6 rounded-[20px] border-2 font-medium border-secondary text-secondary hover:bg-primary hover:text-white">Login</Link>
