@@ -3,9 +3,11 @@ import Header from "../../components/header/header";
 import Quotes from "../../components/quotes/quotes";
 import { books } from "../../data/books";
 import BookCard from "../../components/bookCard/bookCard";
+import { useState } from "react";
 
 export default function Home () {
     const [ searchParams ] = useSearchParams()
+    const [page, setPage] = useState(1)
 
     const cat = searchParams.get("cat") || "Non-Fiction"
     const search = searchParams.get("search") || ""
@@ -46,9 +48,9 @@ export default function Home () {
             </div>
 
             <div className="flex items-center justify-center gap-4 py-8">
-                <button className="p-2 px-5 rounded-[15px] bg-primary text-white">1</button>
-                <button className="p-2 px-5 rounded-[15px] bg-[#DDD] text-black">2</button>
-                <button className="font-semibold">Next</button>
+                <button className={`p-2 px-5 rounded-[15px] ${ page === 1 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(1)}>1</button>
+                <button className={`p-2 px-5 rounded-[15px] ${ page === 2 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(2)}>2</button>
+                <button className="font-semibold hover:text-primary" onClick={() => setPage(2)}>Next</button>
             </div>
         </div>
     )

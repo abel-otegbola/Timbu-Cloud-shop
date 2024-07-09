@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/cartContext";
 import { useContext } from "react";
+import TimesIcon from "../../assets/icons/timesIcon";
 
 export default function CartOverlay() {
     const { cart, setCart } = useContext(CartContext)
+
+    const removeItemFromCart = (id) => {
+        setCart(cart.filter(item => item.id !== id))
+    }
 
     return (
         <div className="md:w-[400px] w-[300px] py-6 px-3 bg-white sm:text-[16px] text-[12px] shadow-lg rounded-[10px] ">
@@ -11,6 +16,9 @@ export default function CartOverlay() {
 
             <div className="flex flex-col gap-2">
                 {
+                    cart.length === 0 ?
+                    <p className="italic py-4 text-center font-normal">There's nothing in your Cart</p>
+                    :
                     cart.map(book => (
                         <Link key={book.id} className="flex gap-6 justify-between">
                             <img src={book.img} alt={book.title} width={87} className="rounded-[5px]" />
@@ -18,6 +26,7 @@ export default function CartOverlay() {
                                 <p className="opacity-[0.7]">{book.title}</p>
                                 <p className="text-primary font-semibold">{book.quantity || 1} x #{book.price}.00</p>
                             </div>
+                            <button className="hover:text-red-500" onClick={() => removeItemFromCart(book.id)}><TimesIcon className={"w-[24px]"} /></button>
                         </Link>
                     ))
                 }

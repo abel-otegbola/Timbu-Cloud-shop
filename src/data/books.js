@@ -9,14 +9,14 @@ export const books = [
     {
         id: 2,
         title: "Becoming Michelle Obama",
-        img: "/products/2.png",
+        img: "/products/2.jpg",
         price: 8000,
         category: "Non-Fiction"
     },
     {
         id: 3,
         title: "Finding Me",
-        img: "/products/3.png",
+        img: "/products/3.jpg",
         price: 5500,
         category: "Non-Fiction"
     },
@@ -30,21 +30,21 @@ export const books = [
     {
         id: 5,
         title: "Breadth",
-        img: "/products/5.png",
+        img: "/products/5.jpg",
         price: 4000,
         category: "Non-Fiction"
     },
     {
         id: 6,
         title: "The Snake Head",
-        img: "/products/6.png",
+        img: "/products/6.jpg",
         price: 7500,
         category: "Non-Fiction"
     },
     {
         id: 7,
         title: "Atomic Habits",
-        img: "/products/7.png",
+        img: "/products/7.jpg",
         price: 6000,
         category: "Non-Fiction"
     },
@@ -65,21 +65,21 @@ export const books = [
     {
         id: 10,
         title: "You Just Need to Loose Weight",
-        img: "/products/10.png",
+        img: "/products/10.jpg",
         price: 8000,
         category: "Non-Fiction"
     },
     {
         id: 11,
         title: "Stay Curious",
-        img: "/products/11.png",
+        img: "/products/11.jpg",
         price: 5000,
         category: "Non-Fiction"
     },
     {
         id: 12,
         title: "Think And Grow Rich",
-        img: "/products/12.png",
+        img: "/products/12.jpg",
         price: 10000,
         category: "Non-Fiction"
     },

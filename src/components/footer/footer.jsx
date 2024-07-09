@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="md:w-[30%] w-full">
                 <h2 className="font-bold mb-3 text-lg">Join The Hybrid Worm</h2>
                 <p>A weekly newsletter from Hybrid Books where we share recommendations of the best books, exclusive discounts, and details of our online Book Club meetings.</p>
-                <button className="p-2 px-5 bg-secondary text-white rounded-[20px] mt-4">Subscribe</button>
+                <button className="p-2 px-5 bg-secondary hover:bg-primary hover:border border-secondary text-white rounded-[20px] mt-4">Subscribe</button>
             </div>
 
             <div className="md:w-[15%] w-full flex flex-col gap-1">

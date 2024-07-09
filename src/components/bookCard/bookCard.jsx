@@ -19,7 +19,7 @@ export default function BookCard({ book }) {
             <p className="opacity-[0.7]">{book.category}</p>
             <p className="text-primary font-semibold">{book.title}</p>
             <p className="font-semibold">#{book.price}</p>
-            <button className="bg-secondary p-2 w-full rounded-[10px] text-[#262626] font-bold" onClick={() => toggleToCart(book)}>
+            <button className="bg-secondary p-3 w-full rounded-[10px] text-[#262626] font-bold" onClick={() => toggleToCart(book)}>
                 { cart.map(element => element.id).indexOf(book.id) !== -1 ? "Remove From Cart" : "Add To Cart" }
             </button>
         </div>
