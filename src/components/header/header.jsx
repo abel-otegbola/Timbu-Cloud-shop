@@ -45,7 +45,7 @@ export default function Header() {
                     <WishlistOverlay />
                 </div>
 
-                <button disabled={pathname === "/cart" || pathname === "/checkout"} className={`flex items-center gap-2 ${pathname === "/cart" ? "text-primary" : "hover:text-primary"}`} onClick={() => setOpenCart(!openCart)}>
+                <button disabled={pathname === "/cart"} className={`flex items-center gap-2 ${pathname === "/cart" ? "text-primary" : "hover:text-primary"}`} onClick={() => setOpenCart(!openCart)}>
                     <CartIcon className="w-[20px]"/>
                     <span className="md:block hidden">My Cart</span>
                 </button>
