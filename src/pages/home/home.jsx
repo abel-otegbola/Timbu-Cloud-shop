@@ -39,7 +39,7 @@ export default function Home () {
                 </div>
             </div>
 
-            <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 sm:gap-4 gap-9">
+            <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 sm:gap-8 gap-9">
                 {
                     books.filter(item => item.title.indexOf(search) !== -1).map(book => (
                         <BookCard key={book.id} book={book} />
