@@ -17,6 +17,7 @@ function App() {
     <CartContextProvider>
       <WishlistContextProvider>
         <BrowserRouter>
+          <div className="max-w-[1840px] mx-auto">
           <Topbar />
           <Routes>
             <Route path={"/"} exact element={<Home />} />
@@ -24,6 +25,7 @@ function App() {
             <Route path={"/checkout"} exact element={<Checkout />} />
           </Routes>
           <Footer />
+          </div>
         </BrowserRouter>
       </WishlistContextProvider>
     </CartContextProvider>
