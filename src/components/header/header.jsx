@@ -20,13 +20,16 @@ export default function Header() {
 
     return (
         <div ref={categoriesRef} className="relative xl:text-[28px] md:text-[18px] text-[16px] flex items-center justify-between w-full md:px-[5%] px-6 py-4 lg:gap-[8%] sm:gap-6 gap-2 font-semibold border-2 border-transparent border-b-primary">
-            <button className="flex items-center gap-1 hover:text-primary" onClick={() => setOpenCategories(!openCategories)}>
-                <MenuIcon className="sm:w-[40px] w-[30px]"/>
-                <span className="sm:block hidden">Categories</span>
-            </button>
+            
+            <div className="relative" onMouseOut={() => setOpenCategories(false)} onMouseOver={() => setOpenCategories(true)}>
+                <button className="flex items-center gap-1 hover:text-primary" onClick={() => setOpenCategories(!openCategories)}>
+                    <MenuIcon className="sm:w-[40px] w-[30px]"/>
+                    <span className="sm:block hidden">Categories</span>
+                </button>
 
-            <div className={`${openCategories ? "block" : "hidden"} absolute top-[100%] leftt-0 z-[1]`}>
-                <CategoriesOverlay />
+                <div className={`${openCategories ? "block" : "hidden"} absolute top-[100%] leftt-0 z-[1]`}>
+                    <CategoriesOverlay />
+                </div>
             </div>
 
             <form action="/" className="flex items-center md:text-[16px] text-[12px] border-2 border-primary lg:flex-1 min-[400px]:w-[60%] xl:rounded-[20px] rounded-[15px]">
@@ -37,20 +40,24 @@ export default function Header() {
             </form>
 
             <div ref={cartRef} className="relative flex items-center gap-8">
-                <button className="flex items-center gap-2 hover:text-primary" onClick={() => setOpenWishlist(!openWishlist)}>
-                    <BagIcon className="w-[20px]"/>
-                    <span className="md:block hidden">Wishlist</span>
-                </button>
-                <div className={`${openWishlist ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
-                    <WishlistOverlay />
+                <div className="relative" onMouseOut={() => setOpenWishlist(false)} onMouseOver={() => setOpenWishlist(true)}>
+                    <button className="flex items-center gap-2 hover:text-primary" >
+                        <BagIcon className="w-[20px]"/>
+                        <span className="md:block hidden">Wishlist</span>
+                    </button>
+                    <div className={`${openWishlist ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
+                        <WishlistOverlay />
+                    </div>
                 </div>
 
-                <button disabled={pathname === "/cart"} className={`flex items-center gap-2 ${pathname === "/cart" ? "text-primary" : "hover:text-primary"}`} onClick={() => setOpenCart(!openCart)}>
-                    <CartIcon className="w-[20px]"/>
-                    <span className="md:block hidden">My Cart</span>
-                </button>
-                <div className={`${openCart ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
-                    <CartOverlay />
+                <div className="relative" onMouseOut={() => setOpenCart(false)} onMouseOver={() => setOpenCart(pathname !== "/cart" ? true : false)}>
+                    <Link to={"/cart"} className={`flex items-center gap-2 ${pathname === "/cart" ? "text-primary" : "hover:text-primary"}`}>
+                        <CartIcon className="w-[20px]"/>
+                        <span className="md:block hidden">My Cart</span>
+                    </Link>
+                    <div className={`${openCart ? "block" : "hidden"} absolute top-[100%] right-0 z-[1]`}>
+                        <CartOverlay />
+                    </div>
                 </div>
             </div>
         </div>
