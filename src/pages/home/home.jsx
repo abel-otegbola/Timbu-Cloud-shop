@@ -41,7 +41,10 @@ export default function Home () {
 
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 sm:gap-8 gap-9">
                 {
-                    books.filter(item => item.title.indexOf(search) !== -1).map(book => (
+                    books.filter(item => (item.category === cat && item.title.indexOf(search) !== -1 )).length === 0 ?
+                    <p className="italic py-4 text-center font-normal">No book found</p>
+                    :
+                    books.filter(item => (item.category === cat && item.title.indexOf(search) !== -1 )).map(book => (
                         <BookCard key={book.id} book={book} />
                     ))
                 }
@@ -49,8 +52,14 @@ export default function Home () {
 
             <div className="flex items-center justify-center gap-4 py-8">
                 <button className={`p-2 px-5 rounded-[15px] ${ page === 1 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(1)}>1</button>
-                <button className={`p-2 px-5 rounded-[15px] ${ page === 2 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(2)}>2</button>
-                <button className="font-semibold hover:text-primary" onClick={() => setPage(2)}>Next</button>
+                {
+                    books.filter(item => (item.category === cat && item.title.indexOf(search) !== -1 )).length > 12 ?
+                        <>
+                            <button className={`p-2 px-5 rounded-[15px] ${ page === 2 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(2)}>2</button>
+                            <button className="font-semibold hover:text-primary" onClick={() => setPage(2)}>Next</button>
+                        </>
+                    : ""
+                }
             </div>
         </div>
     )
