@@ -1,8 +1,13 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Topbar () {
     const [open, setOpen] = useState(false)
+    const pathname = useLocation()
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
 
     return (
         <nav className="flex items-center justify-between w-full px-6 py-3 overflow-hidden border border-transparent border-b-secondary">
