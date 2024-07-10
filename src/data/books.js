@@ -50,7 +50,7 @@ export const books = [
     },
     {
         id: 8,
-        title: "How to Stand Up to a Detector ",
+        title: "How to Stand Up to a Dictator ",
         img: "/products/8.png",
         price: 6000,
         category: "Non-Fiction"

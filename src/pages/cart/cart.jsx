@@ -31,7 +31,7 @@ export default function Cart() {
                 <div className="md:w-[70%] w-full border border-transparent sm:text-[16px] text-[12px] md:border-r-[#DDD] md:pr-6">
 
                     <div className="w-full overflow-x-auto">
-                        <table className="table-auto text-left w-full min-w-[430px]">
+                        <table className="table-auto text-left w-full min-w-[380px]">
                             <thead>
                                 <tr className="font-bold border border-transparent border-b-[#DDD]">
                                     <th>Product</th>
@@ -54,7 +54,7 @@ export default function Cart() {
                                                     <p className="opacity-[0.7] md:text-[16px] text-[12px]">{book.title}</p>
                                                 </div>
                                             </td>
-                                            <td className="text-primary sm:text-[16px] text-[12px] font-semibold px-2"># {book.price}</td>
+                                            <td className="text-primary sm:text-[16px] text-[12px] min-w-[80px] font-semibold px-2"># {book.price}</td>
                                             <td className="px-4">
                                                 <div className=" flex items-center w-fit text-primary font-semibold items-start border border-[#262626]">
                                                     <button className="sm:text-lg sm:w-[40px] w-[20px] sm:h-[67px] h-[47px] bg-[#DDD] hover:bg-[#DDD]/[0.8]" onClick={() => handleQuantity(book.id, (book.quantity || 1) - 1)}>-</button>
@@ -71,7 +71,7 @@ export default function Cart() {
                         </table>
                     </div>
 
-                    <div className="flex items-center justify-between gap-6 border border-transparent border-t-[#DDD] p-6">
+                    <div className="flex items-center justify-between gap-6 border border-transparent border-t-[#DDD] md:p-6 py-6 ">
                         <Link to={"/"} className="flex items-center gap-2 p-2 px-5 rounded-[10px] border-2 border-secondary hover:bg-primary hover:text-white text-secondary"> <ArrowIcon className={"md:w-[20px] w-[15px]"}/> Back to Shop</Link>
                         <button className="p-2 px-5 rounded-[10px] bg-secondary hover:bg-primary hover:text-white text-[#262626]">Update Cart</button>
                     </div>

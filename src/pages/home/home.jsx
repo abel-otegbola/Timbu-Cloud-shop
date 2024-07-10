@@ -29,8 +29,8 @@ export default function Home () {
 
             <Header />
 
-            <div className="overflow-x-auto px-[7%] md:block hidden">   
-                <div className="flex items-center md:justify-between flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
+            <div className="overflow-x-auto px-[5%] md:block hidden">   
+                <div className="flex items-center md:justify-between xl:text-[28px] md:text-[18px] text-[16px] flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
                     {
                         [categories.map(item => (
                             <Link key={item.id} to={"/?cat="+ item.title} className={` ${ cat === item.title ? "underline font-bold" : "" }`}>{item.title}</Link>
@@ -39,7 +39,7 @@ export default function Home () {
                 </div>
             </div>
 
-            <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 sm:gap-8 gap-9">
+            <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 gap-x-8 gap-y-14">
                 {
                     books.filter(item => (item.category === cat && item.title.indexOf(search) !== -1 )).length === 0 ?
                     <p className="italic py-4 text-center font-normal">No book found</p>
@@ -52,14 +52,8 @@ export default function Home () {
 
             <div className="flex items-center justify-center gap-4 py-8">
                 <button className={`p-2 px-5 rounded-[15px] ${ page === 1 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(1)}>1</button>
-                {
-                    books.filter(item => (item.category === cat && item.title.indexOf(search) !== -1 )).length > 12 ?
-                        <>
-                            <button className={`p-2 px-5 rounded-[15px] ${ page === 2 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(2)}>2</button>
-                            <button className="font-semibold hover:text-primary" onClick={() => setPage(2)}>Next</button>
-                        </>
-                    : ""
-                }
+                <button className={`p-2 px-5 rounded-[15px] ${ page === 2 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(2)}>2</button>
+                <button className="font-semibold hover:text-primary" onClick={() => setPage(2)}>Next</button>
             </div>
         </div>
     )

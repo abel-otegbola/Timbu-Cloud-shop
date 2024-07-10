@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/header/header";
 import { CartContext } from "../../context/cartContext";
 import { useContext } from "react";
+import InputField from "../../components/inputField/inputField";
 
 export default function Checkout() {
     const { cart } = useContext(CartContext)
@@ -9,59 +10,35 @@ export default function Checkout() {
     return (
         <>
             <Header />
-            <h2 className="font-bold mb-3 md:text-[36px] text-[24px] p-6">Checkout</h2>
+            <h2 className="font-bold mb-3 xl:text-[36px] text-[24px] p-6">Checkout</h2>
 
 
             <div className="flex flex-wrap md:px-8 px-6 py-[3%] md:gap-0 gap-12">
 
-                <div className="md:w-[70%] w-full border border-transparent sm:text-[16px] text-[14px] md:border-r-[#DDD] md:px-[5%]">
+                <div className="md:w-[60%] w-full border border-transparent xl:text-[20px] sm:text-[16px] text-[14px] md:border-r-[#DDD] md:px-[5%]">
 
                     <p>Are you a returning customer? <Link className="text-secondary" to={"/"}>Login</Link></p>
 
                     <h3 className="font-semibold text-[20px] mt-10 mb-6">Billing Details</h3>
 
                     <div >
-                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6">
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="firstname">First Name <span className="text-red-500">*</span></label>
-                                <input type="text" name="firstname" id="firstname" className="p-4 rounded-[8px] border-2 border-[#DDD] w-full focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
-                            </div>
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="lastname">Last Name <span className="text-red-500">*</span></label>
-                                <input type="text" name="lastname" id="lastname" className="p-4 rounded-[8px] border-2 border-[#DDD] w-full focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
-                            </div>
+                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6 my-6">
+                            <InputField type={"text"} label={"First Name"} required={true} name={"firstname"} />
+                            <InputField type={"text"} label={"Last Name"} required={true} name={"lastname"} />
                         </div>
 
-                        <div className="flex flex-col gap-2 mt-6">
-                            <label htmlFor="country">Country <span className="text-red-500">*</span></label>
-                            <input type="text" name="country" id="country" className="p-4 rounded-[8px] border-2 border-[#DDD] w-full focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
+                        <InputField type={"text"} label={"Country"} required={true} name={"country"} />
+
+                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6 my-6">
+                            <InputField type={"text"} label={"State"} required={true} name={"state"} />
+                            <InputField type={"text"} label={"City"} required={true} name={"city"} />
                         </div>
 
-                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6 mt-6">
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="state">State <span className="text-red-500">*</span></label>
-                                <input type="text" name="state" id="state" className="p-4 rounded-[8px] border-2 border-[#DDD] w-full focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
-                            </div>
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="city">City <span className="text-red-500">*</span></label>
-                                <input type="text" name="city" id="city" className="p-4 rounded-[8px] border-2 border-[#DDD] w-full focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
-                            </div>
-                        </div>
-                        
-                        <div className="flex flex-col gap-2 mt-6">
-                            <label htmlFor="address">Residential Address <span className="text-red-500">*</span></label>
-                            <input type="text" name="address" id="address" className="p-4 rounded-[8px] border-2 border-[#DDD] w-full focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
-                        </div>
+                        <InputField type={"text"} label={"Residential Address"} required={true} name={"address"} />
 
-                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6 mt-6">
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="phone">Phone No <span className="text-red-500">*</span></label>
-                                <input type="tel" name="phone" id="phone" className="p-4 rounded-[8px] border-2 border-[#DDD] w-full focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
-                            </div>
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="email">Email Address <span className="text-red-500">*</span></label>
-                                <input type="email" name="email" id="email" className="p-4 rounded-[8px] border-2 border-[#DDD] w-full focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
-                            </div>
+                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6 my-6">
+                            <InputField type={"text"} label={"Phone No"} required={true} name={"phone"} />
+                            <InputField type={"email"} label={"Email Address"} required={true} name={"email"} />
                         </div>
 
                         <div className="flex items-center gap-2 py-6">
@@ -77,7 +54,7 @@ export default function Checkout() {
                 </div>
 
 
-                <div className="md:w-[30%] w-full md:px-6 sm:text-[16px] text-[14px]">
+                <div className="md:w-[40%] w-full md:px-6 xl:text-[20px] sm:text-[16px] text-[14px]">
                     <h2 className="mb-3 md:text-[20px] text-[18px]">Your Order</h2>
 
                     <div className="flex items-center justify-between py-4 border border-transparent border-b-[#DDD]">
