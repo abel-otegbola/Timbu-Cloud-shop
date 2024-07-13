@@ -8,9 +8,9 @@ import { StoreContext } from "../../context/storeContext";
 
 export default function Home () {
     const [ searchParams ] = useSearchParams()
-    const { products, page, setPage } = useContext(StoreContext) 
+    const { products, page, setPage, loading } = useContext(StoreContext) 
 
-    const cat = searchParams.get("cat") || "Non-Fiction"
+    const cat = searchParams.get("cat") || ""
     const search = searchParams.get("search") || ""
 
     const categories = [
@@ -40,16 +40,24 @@ export default function Home () {
                 </div>
             </div>
 
-            <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 gap-x-8 gap-y-14">
-                {
-                    products?.filter(item => (item?.name?.indexOf(search) !== -1 )).length === 0 ?
-                    <p className="italic py-4 text-center font-normal">No book found</p>
-                    :
-                    products?.filter(item => (item?.name?.indexOf(search) !== -1 )).map(book => (
-                        <BookCard key={book.id} book={book} />
-                    ))
-                }
-            </div>
+            {
+                loading ?
+                <div className="flex h-[80vh] flex-col items-center justify-center gap-8">
+                    <h1 className="animate-pulse">Loading</h1>
+                </div>
+                :
+                <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 gap-x-8 gap-y-14">
+                    {
+                        products?.filter(item => (item?.name?.indexOf(search) !== -1 )).length === 0 ?
+                        <p className="italic py-4 text-center font-normal">No book found</p>
+                        :
+                        products?.filter(item => ( item?.name?.indexOf(search) !== -1 )).map(book => (
+                            <BookCard key={book.id} book={book} />
+                        ))
+                    }
+                </div>
+            }
+
 
             <div className="flex items-center justify-center gap-4 py-8">
                 <button className={`p-2 px-5 rounded-[15px] ${ page === 1 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(1)}>1</button>

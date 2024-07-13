@@ -10,6 +10,7 @@ import Home from './pages/home/home'
 import Cart from './pages/cart/cart'
 import Checkout from './pages/checkout/checkout'
 import Product from './pages/product/product'
+import PaymentSuccesful from './pages/payment-successful/payment-successful'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path={"/cart"} exact element={<Cart />} />
             <Route path={"/checkout"} exact element={<Checkout />} />
             <Route path={"/product/*"} exact element={<Product />} />
+            <Route path={"/payment-successful"} exact element={<PaymentSuccesful />} />
           </Routes>
           <Footer />
           </div>
