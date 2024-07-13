@@ -8,8 +8,7 @@ import { StoreContext } from "../../context/storeContext";
 
 export default function Home () {
     const [ searchParams ] = useSearchParams()
-    const [page, setPage] = useState(1)
-    const { products } = useContext(StoreContext) 
+    const { products, page, setPage } = useContext(StoreContext) 
 
     const cat = searchParams.get("cat") || "Non-Fiction"
     const search = searchParams.get("search") || ""

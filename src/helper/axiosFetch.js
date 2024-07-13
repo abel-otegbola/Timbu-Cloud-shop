@@ -5,9 +5,9 @@ const Appid = import.meta.env.VITE_APP_ID
 const Apikey = import.meta.env.VITE_API_KEY;
 
 
-export const getProducts = async () => {
+export const getProducts = async (page) => {
     return await axios.get(
-        `/api/products?organization_id=${ORG_ID}&reverse_sort=false&page=1&size=10&Appid=${Appid}&Apikey=${Apikey}`
+        `/api/products?organization_id=${ORG_ID}&reverse_sort=false&page=${page}&size=12&Appid=${Appid}&Apikey=${Apikey}`
     )
 }
 
