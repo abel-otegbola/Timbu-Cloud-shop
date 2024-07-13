@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { CartContext } from "../../context/cartContext";
+import { StoreContext } from "../../context/storeContext";
 import { useContext } from "react";
 import TimesIcon from "../../assets/icons/timesIcon";
 
 export default function CartOverlay() {
-    const { cart, setCart } = useContext(CartContext)
+    const { cart, setCart } = useContext(StoreContext)
 
     const removeItemFromCart = (id) => {
         setCart(cart.filter(item => item.id !== id))
