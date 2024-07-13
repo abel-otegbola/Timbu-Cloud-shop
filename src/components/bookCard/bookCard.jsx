@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { StoreContext } from "../../context/storeContext";
 import LazyLoad from "react-lazyload";
+import { Link } from "react-router-dom";
 
 export default function BookCard({ book }) {
     const { cart, setCart } = useContext(StoreContext)
@@ -16,9 +17,11 @@ export default function BookCard({ book }) {
 
     return (
         <div className="flex flex-col justify-between gap-2 md:text-[16px] text-[13px]">
-            <LazyLoad height={250}>
-                <img src={import.meta.env.VITE_API_IMG_URL + "/" +  book?.photos[0].url} alt={book.title} width={"100%"} className="rounded-[15px]" />
-            </LazyLoad>
+            <Link to={`/product/${book.id}`}>
+                <LazyLoad height={250}>
+                    <img src={import.meta.env.VITE_API_IMG_URL + "/" +  book?.photos[0].url} alt={book.title} width={"100%"} className="rounded-[15px]" />
+                </LazyLoad>
+            </Link>
             <div className="flex flex-col gap-2">
                 <p className="opacity-[0.7]">{book.category}</p>
                 <p className="text-primary font-semibold">{book.name}</p>

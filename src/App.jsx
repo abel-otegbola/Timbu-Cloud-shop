@@ -9,6 +9,7 @@ import Footer from './components/footer/footer'
 import Home from './pages/home/home'
 import Cart from './pages/cart/cart'
 import Checkout from './pages/checkout/checkout'
+import Product from './pages/product/product'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path={"/"} exact element={<Home />} />
             <Route path={"/cart"} exact element={<Cart />} />
             <Route path={"/checkout"} exact element={<Checkout />} />
+            <Route path={"/product/*"} exact element={<Product />} />
           </Routes>
           <Footer />
           </div>
