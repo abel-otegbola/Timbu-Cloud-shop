@@ -43,10 +43,10 @@ export default function Home () {
 
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 gap-x-8 gap-y-14">
                 {
-                    products.filter(item => (item?.name?.indexOf(search) !== -1 )).length === 0 ?
+                    products?.filter(item => (item?.name?.indexOf(search) !== -1 )).length === 0 ?
                     <p className="italic py-4 text-center font-normal">No book found</p>
                     :
-                    products.filter(item => (item?.name?.indexOf(search) !== -1 )).map(book => (
+                    products?.filter(item => (item?.name?.indexOf(search) !== -1 )).map(book => (
                         <BookCard key={book.id} book={book} />
                     ))
                 }
