@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/storeContext";
 import { useContext } from "react";
 import TimesIcon from "../../assets/icons/timesIcon";
+import NairaIcon from "../../assets/icons/nairaIcon";
 
 export default function CartOverlay() {
     const { cart, setCart } = useContext(StoreContext)
@@ -16,18 +17,20 @@ export default function CartOverlay() {
 
             <div className="flex flex-col gap-2">
                 {
-                    cart.length === 0 ?
+                    cart?.length === 0 ?
                     <p className="italic py-4 text-center font-normal">There's nothing in your Cart</p>
                     :
                     cart.map(book => (
-                        <Link key={book.id} className="flex gap-6 justify-between">
-                            <img src={book.img} alt={book.title} width={87} className="rounded-[5px]" />
+                        <div key={book.id} className="flex gap-6 justify-between">
+                            <Link to={"/product/"+book.id}>
+                                <img src={book.img} alt={book.name} width={87} className="rounded-[5px]" />
+                            </Link>
                             <div className="flex-1 flex flex-col justify-betwween py-4 gap-2">
-                                <p className="opacity-[0.7]">{book.title}</p>
-                                <p className="text-primary font-semibold">{book.quantity || 1} x #{book.price}.00</p>
+                                <Link to={"/product/"+book.id} className="opacity-[0.7]">{book.name}</Link>
+                                <p className="text-primary font-semibold flex gap-1 items-center">{book.quantity || 1} x <NairaIcon className={"md:w-[14px] w-[10px]"} /> {book.price}.00</p>
                             </div>
                             <button className="hover:text-red-500" onClick={() => removeItemFromCart(book.id)}><TimesIcon className={"w-[24px]"} /></button>
-                        </Link>
+                        </div>
                     ))
                 }
             </div>

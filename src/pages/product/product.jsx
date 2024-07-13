@@ -9,6 +9,8 @@ import TwitterIcon from "../../assets/icons/twitterIcon";
 import InstagramIcon from "../../assets/icons/instagramIcon";
 import CartIcon from "../../assets/icons/cartIcon";
 import { StoreContext } from "../../context/storeContext";
+import { toggleToCart } from "../../helper/cartActions";
+import CartQuantity from "../../components/cartQuantity/cartQuantity";
 
 export default function Product() {
     const pathname = useLocation().pathname;
@@ -18,6 +20,7 @@ export default function Product() {
     const { cart, setCart } = useContext(StoreContext)
 
     const id = pathname.replace("/product/", "") || 0
+    
 
     useEffect(() => { // Fetch the product using the id from the API
         setLoading(true)
@@ -32,29 +35,6 @@ export default function Product() {
         })
     }, [id])
 
-    const toggleToCart = (item) => {
-        if(cart.map(element => element.id).indexOf(item.id) === -1) {
-            setCart([ ...cart, item ])
-        }
-        else {
-            setCart(cart.filter(bookIndex => bookIndex.id !== item.id))
-        }
-    }
-
-    const handleQuantity = (id, value) => {
-        setCart(cart.map(item => {
-            if(item.id === id) {
-                return { ...item, quantity: value } 
-            }
-            else {
-                return item
-            }
-        }))
-    }
-    
-    const removeItemFromCart = (id) => {
-        setCart(cart.filter(item => item.id !== id))
-    }
 
     return (
         <div className="md:p-[5%] p-6">
@@ -86,7 +66,7 @@ export default function Product() {
                             </div>
 
                             <div className="flex items-center justify-between py-6 border border-transparent border-b-gray-500/[0.3]">
-                                <button className="flex gap-2 items-center bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded px-4">
+                                <button className="flex gap-2 items-center bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] px-4">
                                     <HeartIcon className={"w-[18px]"} /> <span>Add to Wishlist</span>
                                 </button>
 
@@ -98,18 +78,18 @@ export default function Product() {
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-between py-6 ">
-                                <button className="flex gap-2 items-center bg-primary text-white w-fit rounded px-6 py-2" onClick={() => toggleToCart(product)}>
-                                    <CartIcon className={"w-[18px]"} /> <span>{ cart.map(element => element.id).indexOf(product.id) !== -1 ? "Remove From Cart" : "Add To Cart" }</span>
+                            <div className="flex flex-wrap items-center justify-between py-6 gap-6">
+                                <button className="flex gap-2 items-center bg-primary text-white w-fit rounded-[10px] px-6 py-2" onClick={() => toggleToCart(product, cart, setCart)}>
+                                    <CartIcon className={"w-[18px]"} /> <span>{ cart.map(element => element.id).indexOf(product?.id) !== -1 ? "Remove From Cart" : "Add To Cart" }</span>
                                 </button>
                                 {
-                                    cart.filter(item => item.id === product.id).map(book => (
-                                        <div key={book.id} className=" flex items-center w-fit font-semibold items-start border border-[#262626] rounded overflow-hidden duration-700">
-                                            <button className="sm:text-lg sm:w-[40px] w-[20px] h-[45px] bg-[#DDD] hover:bg-[#DDD]/[0.8]" onClick={() => handleQuantity(book.id, (book.quantity || 1) - 1)}>-</button>
-                                            <input type="number" className="h-full sm:w-[55px] w-[35px] md:text-[16px] text-[12px] text-center bg-white" value={book.quantity || 1} onChange={(e) => handleQuantity(book.id, e.target.value)} />
-                                            <button className="sm:text-lg sm:w-[40px] w-[20px] h-[45px] bg-[#DDD] hover:bg-[#DDD]/[0.8]" onClick={() => handleQuantity(book.id, (book.quantity || 1) + 1)}>+</button>
-                                        </div>
-                                    ))
+                                    cart.map(element => element.id).indexOf(product?.id) !== -1 ?
+                                        <>
+                                            <CartQuantity book={cart.filter(item => item.id !== product?.id)[0]} cart={cart} setCart={setCart} />
+                                            <Link to={"/cart"} className="w-full block text-center border border-primary/[0.3] text-primary rounded-[10px] px-6 py-3">View Cart</Link>
+                                        </>
+                                        : 
+                                        ""
                                 }
                             </div>
 

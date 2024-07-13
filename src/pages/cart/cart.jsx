@@ -4,6 +4,8 @@ import { StoreContext } from "../../context/storeContext";
 import { useContext } from "react";
 import ArrowIcon from "../../assets/icons/arrowIcon";
 import TimesIcon from "../../assets/icons/timesIcon";
+import NairaIcon from "../../assets/icons/nairaIcon";
+import CartQuantity from "../../components/cartQuantity/cartQuantity";
 
 export default function Cart() {
     const { cart, setCart } = useContext(StoreContext)
@@ -46,23 +48,21 @@ export default function Cart() {
                                     <p className="italic py-4 text-center font-normal">There's nothing in your Cart</p>
                                     :
                                     cart.map(book => (
-                                        <tr key={book.id} className="relative">                                            
-                                            <button className="hover:text-red-500 absolute top-0 right-4" onClick={() => removeItemFromCart(book.id)}><TimesIcon className={"w-[24px]"} /></button>
+                                        <tr key={book.id} className="">                                            
                                             <td className="flex gap-6 justify-between py-4">
-                                                <img src={book.img} alt={book.title} className="xl:w-[138px] sm:w-[87px] w-[60px]" />
-                                                <div className="flex-1 flex flex-col justify-center py-4 gap-2">
-                                                    <p className="font-medium md:text-[16px] text-[12px]">{book.title}</p>
+                                                <button className="hover:text-red-500" onClick={() => removeItemFromCart(book.id)}><TimesIcon className={"w-[24px]"} /></button>
+                                                <img src={book.img} alt={book.name} className="xl:w-[138px] sm:w-[87px] w-[60px]" />
+                                                <div className="flex-1 flex flex-col justify-center py-4 gap-2 pr-6">
+                                                    <p className="font-medium md:text-[16px] text-[12px]">{book.name}</p>
                                                 </div>
                                             </td>
-                                            <td className=" sm:text-[16px] text-[12px] min-w-[80px] font-semibold px-2"># {book.price}</td>
+                                            <td className=" font-semibold min-w-[90px] sm:text-[16px] text-[12px] ">
+                                                <p className="flex items-center"><NairaIcon className={"w-[16px]"} /> {book.price}</p>
+                                            </td>
                                             <td className="px-4">
-                                                <div className=" flex items-center w-fit font-semibold items-start border border-[#262626]">
-                                                    <button className="sm:text-lg sm:w-[40px] w-[20px] sm:h-[67px] h-[47px] bg-[#DDD] hover:bg-[#DDD]/[0.8]" onClick={() => handleQuantity(book.id, (book.quantity || 1) - 1)}>-</button>
-                                                    <input type="number" className="h-full sm:w-[55px] w-[35px] md:text-[16px] text-[12px] text-center bg-white" value={book.quantity || 1} onChange={(e) => handleQuantity(book.id, e.target.value)} />
-                                                    <button className="sm:text-lg sm:w-[40px] w-[20px] sm:h-[67px] h-[47px] bg-[#DDD] hover:bg-[#DDD]/[0.8]" onClick={() => handleQuantity(book.id, (book.quantity || 1) + 1)}>+</button>
-                                                </div>
+                                                <CartQuantity book={book} cart={cart} setCart={setCart}/>
                                             </td>
-                                            <td className=" font-semibold min-w-[90px] sm:text-[16px] text-[12px] "># {book.quantity ? book.price * book.quantity : book.price}</td>
+                                            <td className=" font-semibold min-w-[90px] sm:text-[16px] flex items-center text-[12px] "><NairaIcon className={"w-[16px]"} /> {book.quantity ? book.price * book.quantity : book.price}</td>
                                         </tr>
                                     ))
                                 }
