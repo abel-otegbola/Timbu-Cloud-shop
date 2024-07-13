@@ -1,7 +1,7 @@
 export default function InputField({ type, label, required, name }) {
     return (
         <div className="flex flex-col gap-2">
-            <label htmlFor={name} className="xl:text-[18px] font-medium">
+            <label htmlFor={name} className="2xl:text-[18px] font-medium">
                 {label} 
                 {
                     required ? <span className="text-red-500 -mb-1">*</span>: ""
