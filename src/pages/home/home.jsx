@@ -3,11 +3,13 @@ import Header from "../../components/header/header";
 import Quotes from "../../components/quotes/quotes";
 import { books } from "../../data/books";
 import BookCard from "../../components/bookCard/bookCard";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { StoreContext } from "../../context/storeContext";
 
 export default function Home () {
     const [ searchParams ] = useSearchParams()
     const [page, setPage] = useState(1)
+    const { products } = useContext(StoreContext) 
 
     const cat = searchParams.get("cat") || "Non-Fiction"
     const search = searchParams.get("search") || ""
@@ -30,7 +32,7 @@ export default function Home () {
             <Header />
 
             <div className="overflow-x-auto px-[5%] md:block hidden">   
-                <div className="flex items-center md:justify-between xl:text-[28px] md:text-[18px] text-[16px] flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
+                <div className="flex items-center md:justify-between 2xl:text-[28px] md:text-[18px] text-[16px] flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
                     {
                         [categories.map(item => (
                             <Link key={item.id} to={"/?cat="+ item.title} className={` ${ cat === item.title ? "underline font-bold" : "" }`}>{item.title}</Link>
@@ -41,10 +43,10 @@ export default function Home () {
 
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 gap-x-8 gap-y-14">
                 {
-                    books.filter(item => (item.category === cat && item.title.indexOf(search) !== -1 )).length === 0 ?
+                    products.filter(item => (item?.name?.indexOf(search) !== -1 )).length === 0 ?
                     <p className="italic py-4 text-center font-normal">No book found</p>
                     :
-                    books.filter(item => (item.category === cat && item.title.indexOf(search) !== -1 )).map(book => (
+                    products.filter(item => (item?.name?.indexOf(search) !== -1 )).map(book => (
                         <BookCard key={book.id} book={book} />
                     ))
                 }

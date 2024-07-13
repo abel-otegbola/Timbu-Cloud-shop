@@ -19,7 +19,7 @@ export default function Header() {
     const categoriesRef = useOutsideClick(setOpenCategories)
 
     return (
-        <div ref={categoriesRef} className="relative xl:text-[28px] md:text-[18px] text-[16px] flex items-center justify-between w-full md:px-[5%] px-6 py-4 lg:gap-[8%] sm:gap-6 gap-2 font-semibold border-2 border-transparent border-b-primary">
+        <div ref={categoriesRef} className="relative 2xl:text-[28px] md:text-[18px] text-[16px] flex items-center justify-between w-full md:px-[5%] px-6 py-4 lg:gap-[8%] sm:gap-6 gap-2 font-semibold border-2 border-transparent border-b-primary">
             
             <div className="relative" onMouseOut={() => setOpenCategories(false)} onMouseOver={() => setOpenCategories(true)}>
                 <button className="flex items-center gap-1 hover:text-primary" onClick={() => setOpenCategories(!openCategories)}>
@@ -32,9 +32,9 @@ export default function Header() {
                 </div>
             </div>
 
-            <form action="/" className="flex items-center md:text-[16px] text-[12px] border-2 border-primary lg:flex-1 min-[400px]:w-[60%] xl:rounded-[20px] rounded-[15px]">
-                <input type="search" name="search" className="sm:p-3 p-2 max-[400px]:w-[75%] xl:text-[20px] xl:px-12 max-[400px]:p-1 flex-1 w-[75%] rounded-[15px] outline-none px-[3%]" placeholder="Search Books, Authors, Categories" />
-                <button className="flex bg-primary hover:bg-primary/[0.8] text-white justify-center xl:w-[114px] xl:rounded-[17px] sm:w-[75px] w-[60px] rounded-r-[10px] rounded-l-[12px] xl:py-[12px] md:py-[6px] py-[4px]">
+            <form action="/" className="flex items-center md:text-[16px] text-[12px] border-2 border-primary lg:flex-1 min-[400px]:w-[60%] 2xl:rounded-[20px] rounded-[15px]">
+                <input type="search" name="search" className="sm:p-3 p-2 max-[400px]:w-[75%] 2xl:text-[20px] 2xl:px-12 max-[400px]:p-1 flex-1 w-[75%] rounded-[15px] outline-none px-[3%]" placeholder="Search Books, Authors, Categories" />
+                <button className="flex bg-primary hover:bg-primary/[0.8] text-white justify-center 2xl:w-[114px] 2xl:rounded-[17px] sm:w-[75px] w-[60px] rounded-r-[10px] rounded-l-[12px] 2xl:py-[12px] md:py-[6px] py-[4px]">
                     <SearchIcon className={"sm:w-[25px] w-[18px]"}/>
                 </button>
             </form>

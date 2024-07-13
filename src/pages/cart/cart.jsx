@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/header/header";
-import { CartContext } from "../../context/cartContext";
+import { StoreContext } from "../../context/storeContext";
 import { useContext } from "react";
 import ArrowIcon from "../../assets/icons/arrowIcon";
 import TimesIcon from "../../assets/icons/timesIcon";
 
 export default function Cart() {
-    const { cart, setCart } = useContext(CartContext)
+    const { cart, setCart } = useContext(StoreContext)
 
     const handleQuantity = (id, value) => {
         setCart(cart.map(item => {
@@ -26,21 +26,21 @@ export default function Cart() {
     return (
         <>
             <Header />
-            <h2 className="font-bold mb-3 md:text-[36px] text-[24px] p-6">Cart</h2>
+            <h2 className="font-bold mb-3 22xl:text-[36px] text-[24px] p-6">Cart</h2>
             <div className="flex flex-wrap md:px-8 px-6 py-[5%] md:gap-0 gap-12">
                 <div className="md:w-[70%] w-full border border-transparent sm:text-[16px] text-[12px] md:border-r-[#DDD] md:pr-6">
 
                     <div className="w-full overflow-x-auto">
                         <table className="table-auto text-left w-full min-w-[380px]">
                             <thead>
-                                <tr className="font-bold xl:text-[26px] md:text-[20px] border border-transparent border-b-[#DDD]">
+                                <tr className="font-bold 2xl:text-[26px] md:text-[20px] border border-transparent border-b-[#DDD]">
                                     <th>Product</th>
                                     <th>Price</th>
                                     <th className="px-4">Quantity</th>
                                     <th>Subtotal</th>
                                 </tr>
                             </thead>
-                            <tbody className="xl:text-[20px]">
+                            <tbody className="2xl:text-[20px]">
                                 {
                                     cart.length === 0 ?
                                     <p className="italic py-4 text-center font-normal">There's nothing in your Cart</p>
@@ -71,14 +71,14 @@ export default function Cart() {
                         </table>
                     </div>
 
-                    <div className="flex items-center justify-between xl:text-[20px] gap-6 border border-transparent border-t-[#DDD] md:p-6 py-6 ">
+                    <div className="flex items-center justify-between 2xl:text-[20px] gap-6 border border-transparent border-t-[#DDD] md:p-6 py-6 ">
                         <Link to={"/"} className="flex items-center gap-2 p-2 px-5 rounded-[10px] border-2 border-secondary hover:bg-primary hover:text-white text-secondary"> <ArrowIcon className={"md:w-[20px] w-[15px]"}/> Back to Shop</Link>
                         <button className="p-2 px-5 rounded-[10px] bg-secondary hover:bg-primary hover:text-white text-[#262626]">Update Cart</button>
                     </div>
                 </div>
 
 
-                <div className="md:w-[30%] w-full md:px-6 xl:text-[20px] sm:text-[16px] text-[14px]">
+                <div className="md:w-[30%] w-full md:px-6 2xl:text-[20px] sm:text-[16px] text-[14px]">
                     <h2 className="font-bold mb-3 md:text-[20px] text-[18px] border border-transparent border-b-[#DDD]">Cart Totals</h2>
 
                     <div className="flex items-center justify-between py-4 border border-transparent border-b-[#DDD]">

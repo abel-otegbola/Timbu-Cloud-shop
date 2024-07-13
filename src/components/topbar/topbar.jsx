@@ -15,7 +15,7 @@ export default function Topbar () {
                 <img src="/Logo.svg" height={80} alt="hybrid logo" className="2xl:w-[230px] w-[150px]" />
             </Link>
 
-            <div className={`flex lg:flex-row flex-col lg:gap-[8%] xl:text-[20px] bg-white lg:justify-end flex-1 lg:shadow-none shadow-lg lg:p-0 p-[5%] lg:static fixed top-0 left-0 w-full h-full lg:items-center gap-8 duration-700 z-[2] ${open ? "translate-x-0" : "lg:translate-x-0 translate-x-[150%]"}`}>
+            <div className={`flex lg:flex-row flex-col lg:gap-[8%] 2xl:text-[20px] bg-white lg:justify-end flex-1 lg:shadow-none shadow-lg lg:p-0 p-[5%] lg:static fixed top-0 left-0 w-full h-full lg:items-center gap-8 duration-700 z-[2] ${open ? "translate-x-0" : "lg:translate-x-0 translate-x-[150%]"}`}>
                 <div className={`flex lg:flex-row flex-col lg:items-center font-semibold gap-2`}>
                     <Link to={"/"} className="p-4 py-2 hover:text-primary">Home</Link>
                     <Link to={"/"} className="p-4 py-2 hover:text-primary">Shop</Link>

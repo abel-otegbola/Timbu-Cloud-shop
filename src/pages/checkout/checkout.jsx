@@ -1,60 +1,32 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/header/header";
-import { CartContext } from "../../context/cartContext";
+import { StoreContext } from "../../context/storeContext";
 import { useContext } from "react";
 import InputField from "../../components/inputField/inputField";
+import CheckoutForm from "../../components/checkoutForm/checkoutForm";
+import { calculateTotal } from "../../helper/calculateTotal";
 
 export default function Checkout() {
-    const { cart } = useContext(CartContext)
+    const { cart } = useContext(StoreContext)
 
     return (
         <>
             <Header />
-            <h2 className="font-bold mb-3 xl:text-[36px] text-[24px] p-6">Checkout</h2>
-
+            <h2 className="font-bold mb-3 2xl:text-[36px] text-[24px] p-6">Checkout</h2>
 
             <div className="flex flex-wrap md:px-8 px-6 py-[3%] md:gap-0 gap-12">
 
-                <div className="md:w-[60%] w-full border border-transparent xl:text-[20px] sm:text-[16px] text-[14px] md:border-r-[#DDD] md:px-[5%]">
+                <div className="md:w-[60%] w-full border border-transparent 2xl:text-[20px] sm:text-[16px] text-[14px] md:border-r-[#DDD] md:px-[5%]">
 
                     <p>Are you a returning customer? <Link className="text-secondary" to={"/"}>Login</Link></p>
 
-                    <h3 className="font-semibold text-[20px] mt-10 mb-6">Billing Details</h3>
+                    <h3 className="font-semibold 2xl:text-[20px] mt-10 mb-6">Billing Details</h3>
 
-                    <div >
-                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6 my-6">
-                            <InputField type={"text"} label={"First Name"} required={true} name={"firstname"} />
-                            <InputField type={"text"} label={"Last Name"} required={true} name={"lastname"} />
-                        </div>
-
-                        <InputField type={"text"} label={"Country"} required={true} name={"country"} />
-
-                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6 my-6">
-                            <InputField type={"text"} label={"State"} required={true} name={"state"} />
-                            <InputField type={"text"} label={"City"} required={true} name={"city"} />
-                        </div>
-
-                        <InputField type={"text"} label={"Residential Address"} required={true} name={"address"} />
-
-                        <div className="grid md:grid-cols-2 items-center md:gap-10 gap-6 my-6">
-                            <InputField type={"text"} label={"Phone No"} required={true} name={"phone"} />
-                            <InputField type={"email"} label={"Email Address"} required={true} name={"email"} />
-                        </div>
-
-                        <div className="flex items-center gap-2 py-6">
-                            <input type="checkbox" name="signup" id="signup" className="w-5 h-5 rounded border border-[#DDD] focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" />
-                            <label htmlFor="signup">Create an Account?</label>
-                        </div>
-
-                        <div className="flex flex-col gap-2 border-2 border-[#DDD] px-[5%] py-[2%] rounded-[8px]">
-                            <h3 className="font-semibold text-[20px] mt-10 mb-6">Additional Information</h3>
-                            <textarea name="info" id="info" cols="2" rows="4" className=" focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" placeholder="Add notes about your order (e.g special notes about your delivery)"></textarea>
-                        </div>
-                    </div>
+                    <CheckoutForm />
                 </div>
 
 
-                <div className="md:w-[40%] w-full md:px-6 xl:text-[20px] sm:text-[16px] text-[14px]">
+                <div className="md:w-[40%] w-full md:px-6 2xl:text-[20px] sm:text-[16px] text-[14px]">
                     <h2 className="mb-3 md:text-[20px] text-[18px]">Your Order</h2>
 
                     <div className="flex items-center justify-between py-4 border border-transparent border-b-[#DDD]">
@@ -73,7 +45,7 @@ export default function Checkout() {
 
                     <div className="flex items-center justify-between py-4 border border-transparent border-b-[#DDD]">
                         <p>Subtotal</p>
-                        <p>#{cart.length === 0 ? 0 : cart.map(item => item.price * (item.quantity || 1)).reduce((a, c) => a + c)}</p>
+                        <p>#{calculateTotal(cart)}</p>
                     </div>
                     <div className="flex items-center justify-between py-4 border border-transparent border-b-[#DDD]">
                         <p>Shipping</p>
@@ -81,7 +53,7 @@ export default function Checkout() {
                     </div>
                     <div className="flex items-center justify-between py-4 mb-8 border border-transparent border-b-[#DDD] font-medium">
                         <p>Total</p>
-                        <p>#{cart.length === 0 ? 0 : cart.map(item => item.price * (item.quantity || 1)).reduce((a, c) => a + c) + 3000}</p>
+                        <p>#{calculateTotal(cart) + 3000}</p>
                     </div>
                             
                     <h3 className="font-semibold mt-10 mb-2">Have a coupon code?</h3>
