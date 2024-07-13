@@ -73,7 +73,7 @@ export default function Cart() {
 
                     <div className="flex items-center justify-between 2xl:text-[20px] gap-6 border border-transparent border-t-[#DDD] md:p-6 py-6 ">
                         <Link to={"/"} className="flex items-center gap-2 p-2 px-5 rounded-[10px] border-2 border-secondary hover:bg-primary hover:text-white text-secondary"> <ArrowIcon className={"md:w-[20px] w-[15px]"}/> Back to Shop</Link>
-                        <button className="p-2 px-5 rounded-[10px] bg-secondary hover:bg-primary hover:text-white text-[#262626]">Update Cart</button>
+                        <button className="p-2 px-5 rounded-[10px] bg-secondary hover:bg-primary hover:text-white text-[#262626]" onClick={() => setCart([])}>Clear Cart</button>
                     </div>
                 </div>
 
