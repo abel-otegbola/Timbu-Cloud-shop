@@ -17,7 +17,7 @@ export default function BookCard({ book }) {
     return (
         <div className="flex flex-col justify-between gap-2 md:text-[16px] text-[13px]">
             <LazyLoad height={250}>
-                <img src={import.meta.env.VITE_BASE_URL + "/" +  book?.photos[0].url} alt={book.title} width={"100%"} className="rounded-[15px]" />
+                <img src={import.meta.env.VITE_API_IMG_URL + "/" +  book?.photos[0].url} alt={book.title} width={"100%"} className="rounded-[15px]" />
             </LazyLoad>
             <div className="flex flex-col gap-2">
                 <p className="opacity-[0.7]">{book.category}</p>
