@@ -85,11 +85,11 @@ export default function Product() {
                                 {
                                     cart.map(element => element.id).indexOf(product?.id) !== -1 ?
                                         <>
-                                            <CartQuantity book={cart.filter(item => item.id !== product?.id)[0]} cart={cart} setCart={setCart} />
+                                            <CartQuantity book={cart.filter(item => item.id === product?.id)[0]} cart={cart} setCart={setCart} />
                                             <Link to={"/cart"} className="w-full block text-center border border-primary/[0.3] text-primary rounded-[10px] px-6 py-3">View Cart</Link>
                                         </>
                                         : 
-                                        ""
+                                        "" 
                                 }
                             </div>
 

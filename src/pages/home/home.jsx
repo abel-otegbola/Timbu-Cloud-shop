@@ -8,21 +8,9 @@ import { StoreContext } from "../../context/storeContext";
 
 export default function Home () {
     const [ searchParams ] = useSearchParams()
-    const { products, page, setPage, loading } = useContext(StoreContext) 
+    const { products, page, setPage, loading, categories, cat, setCat } = useContext(StoreContext) 
 
-    const cat = searchParams.get("cat") || ""
     const search = searchParams.get("search") || ""
-
-    const categories = [
-        { id: 0, title: "Non-Fiction" },
-        { id: 1, title: "Fiction" },
-        { id: 2, title: "Children" },
-        { id: 3, title: "Business" },
-        { id: 4, title: "Poetry" },
-        { id: 5, title: "Self Help" },
-        { id: 6, title: "Educational" },
-        { id: 7, title: "Religious" }
-    ]
 
     return (
         <div>
@@ -32,9 +20,12 @@ export default function Home () {
 
             <div className="overflow-x-auto px-[5%] md:block hidden">   
                 <div className="flex items-center md:justify-between 2xl:text-[28px] md:text-[18px] text-[16px] flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
+
+                    <button onClick={() => setCat("")} className={` ${ cat === "" ? "underline font-bold" : "" }`}>All</button>
+
                     {
                         [categories.map(item => (
-                            <Link key={item.id} to={"/?cat="+ item.title} className={` ${ cat === item.title ? "underline font-bold" : "" }`}>{item.title}</Link>
+                            <button key={item.id} onClick={() => setCat(item.id)} className={` ${ cat === item.name ? "underline font-bold" : "" }`}>{item.name}</button>
                         ))]
                     }
                 </div>
