@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/header/header";
 import { StoreContext } from "../../context/storeContext";
 import { useContext, useState } from "react";
-import InputField from "../../components/inputField/inputField";
 import CheckoutForm from "../../components/checkoutForm/checkoutForm";
 import { calculateTotal } from "../../helper/calculateTotal";
 import { PaystackButton } from "react-paystack";
@@ -31,7 +30,6 @@ export default function Checkout() {
       };
 
       const submitForm = (data) => {
-        console.log(data)
         setUserData(data)
       }
 

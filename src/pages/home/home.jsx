@@ -4,6 +4,7 @@ import Quotes from "../../components/quotes/quotes";
 import BookCard from "../../components/bookCard/bookCard";
 import { useContext, useEffect } from "react";
 import { StoreContext } from "../../context/storeContext";
+import Skeleton from "../../components/skeleton/skeleton";
 
 export default function Home () {
     const [ searchParams, setSearchParams ] = useSearchParams()
@@ -35,24 +36,23 @@ export default function Home () {
                 </div>
             </div>
 
-            {
-                loading ?
-                <div className="flex h-[80vh] flex-col items-center justify-center gap-8">
-                    <h1 className="animate-pulse">Loading</h1>
-                </div>
-                :
-                <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 gap-x-8 gap-y-14">
-                    {
-                        products?.filter(item => (item?.name?.indexOf(search) !== -1 )).length === 0 ?
-                        <p className="italic py-4 text-center font-normal">No book found</p>
-                        :
-                        products?.filter(item => ( item?.name?.indexOf(search) !== -1 )).map(book => (
-                            <BookCard key={book.id} book={book} />
-                        ))
-                    }
-                </div>
-            }
-
+            
+            <div className="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:px-[7%] p-6 gap-x-8 gap-y-14">
+                {
+                    loading ?
+                    <>
+                        <Skeleton /><Skeleton /><Skeleton /><Skeleton />
+                    </>
+                    
+                    :
+                    products?.filter(item => (item?.name?.indexOf(search) !== -1 )).length === 0 ?
+                    <p className="italic py-4 text-center font-normal">No book found</p>
+                    :
+                    products?.filter(item => ( item?.name?.indexOf(search) !== -1 )).map(book => (
+                        <BookCard key={book.id} book={book} />
+                    ))
+                }
+            </div>
 
             <div className="flex items-center justify-center gap-4 py-8">
                 {

@@ -32,7 +32,7 @@ export default function Header() {
                 </div>
             </div>
 
-            <form action="/" className="flex items-center md:text-[16px] text-[12px] border-2 border-primary lg:flex-1 min-[400px]:w-[60%] 2xl:rounded-[20px] rounded-[15px]">
+            <form action="/search" className="flex items-center md:text-[16px] text-[12px] border-2 border-primary lg:flex-1 min-[400px]:w-[60%] 2xl:rounded-[20px] rounded-[15px]">
                 <input type="search" name="search" className="sm:p-3 p-2 max-[400px]:w-[75%] 2xl:text-[20px] 2xl:px-12 max-[400px]:p-1 flex-1 w-[75%] rounded-[15px] outline-none px-[3%]" placeholder="Search Books, Authors, Categories" />
                 <button className="flex bg-primary hover:bg-primary/[0.8] text-white justify-center 2xl:w-[114px] 2xl:rounded-[17px] sm:w-[75px] w-[60px] rounded-r-[10px] rounded-l-[12px] 2xl:py-[12px] md:py-[6px] py-[4px]">
                     <SearchIcon className={"sm:w-[25px] w-[18px]"}/>

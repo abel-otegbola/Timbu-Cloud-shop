@@ -10,25 +10,36 @@ export default function StoreContextProvider({ children }) {
     const [products, setProducts] = useLocalStorage("products", [])
     const [categories, setCategories] = useLocalStorage("categories", [])
     const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
     const [page, setPage] = useState({ currentPage: 1, total: 12 })
     const [cat, setCat] = useState("")
 
     const getAllProducts = async () => {
+        setLoading(true)
         getProducts(page.currentPage, cat)
         .then(response => {
-           setProducts(response.data.items)
-           setPage({ ...page, total: response.data.total })
+            setProducts(response.data.items)
+            setPage({ ...page, total: response.data.total })
+            setLoading(false)
         })
-        .catch(error => setError(error))
+        .catch(error => {
+            setError(error)
+            setLoading(false)
+        })
     }
 
     const getAllCategories = async () => {
+        setLoading(true)
         getCategories()
         .then(response => {
-           setCategories(response.data.items)
-           setPage({ ...page, total: response.data.total })
+            setCategories(response.data.items)
+            setPage({ ...page, total: response.data.total })
+            setLoading(false)
         })
-        .catch(error => setError(error))
+        .catch(error => {
+            setError(error)
+            setLoading(false)
+        })
     }
 
     useEffect(() => {
@@ -37,7 +48,7 @@ export default function StoreContextProvider({ children }) {
     }, [page.currentPage, cat])
 
     return (
-        <StoreContext.Provider value={{ cart, setCart, error, setError, products, page, setPage, categories, cat, setCat, wishlist, setWishlist }}>
+        <StoreContext.Provider value={{ cart, setCart, error, setError, loading, products, page, setPage, categories, cat, setCat, wishlist, setWishlist }}>
             {children}
         </StoreContext.Provider>
     )

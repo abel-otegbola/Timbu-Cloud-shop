@@ -22,3 +22,9 @@ export const getCategories = async () => {
         `/api/categories?organization_id=${ORG_ID}&reverse_sort=false&page=1&size=12&Appid=${Appid}&Apikey=${Apikey}`
     )
 }
+
+export const searchProducts = async (query) => {
+    return await axios.get(
+        `/api/products?organization_id=${ORG_ID}&search_value=${query}&reverse_sort=false&page=1&size=12&Appid=${Appid}&Apikey=${Apikey}`
+    )
+}
