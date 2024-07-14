@@ -15,7 +15,7 @@ export default function Checkout() {
 
     const componentProps = {
         email: userData?.email,
-        amount: calculateTotal(cart) + 3000,
+        amount: (calculateTotal(cart) + 3000) * 100,
         metadata: {
           custom_fields: [],
           name: userData?.firstname,

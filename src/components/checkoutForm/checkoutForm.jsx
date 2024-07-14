@@ -36,7 +36,7 @@ export default function CheckoutForm({ submitForm }) {
                 <textarea name="info" id="info" cols="2" rows="4" className=" focus:outline focus:outline-secondary/[0.3] outline-offset-2 focus:border-primary" placeholder="Add notes about your order (e.g special notes about your delivery)"></textarea>
             </div>
 
-            <input type="submit" className="hidden" />
+            <button type="submit" className="bg-secondary hover:bg-primary hover:text-white p-3 px-6 my-6 w-fit rounded-[10px] text-[#262626] font-bold ">Save</button>
 
         </form>
     )
