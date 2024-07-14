@@ -1,16 +1,20 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import Header from "../../components/header/header";
 import Quotes from "../../components/quotes/quotes";
-import { books } from "../../data/books";
 import BookCard from "../../components/bookCard/bookCard";
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { StoreContext } from "../../context/storeContext";
 
 export default function Home () {
-    const [ searchParams ] = useSearchParams()
+    const [ searchParams, setSearchParams ] = useSearchParams()
     const { products, page, setPage, loading, categories, cat, setCat } = useContext(StoreContext) 
 
     const search = searchParams.get("search") || ""
+    const catQuery = searchParams.get("category")
+
+    useEffect(() => {
+        setCat(catQuery); setPage({ ...page, currentPage: 1})
+    }, [catQuery])
 
     return (
         <div>
@@ -21,11 +25,11 @@ export default function Home () {
             <div className="overflow-x-auto px-[5%] md:block hidden">   
                 <div className="flex items-center md:justify-between 2xl:text-[28px] md:text-[18px] text-[16px] flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
 
-                    <button onClick={() => { setCat(""); setPage({ ...page, currentPage: 1})}} className={` ${ cat === "" ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>All</button>
+                    <button onClick={() => setSearchParams("category", "")} className={` ${ cat === "" ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>All</button>
 
                     {
                         [categories.map(item => (
-                            <button key={item.id} onClick={() => { setCat(item.id); setPage({ ...page, currentPage: 1})}} className={`capitalize ${ cat === item.id ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>{item.name}</button>
+                            <button key={item.id} onClick={() =>  setSearchParams({category: item.id})} className={`capitalize ${ cat === item.id ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>{item.name}</button>
                         ))]
                     }
                 </div>

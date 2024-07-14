@@ -6,6 +6,7 @@ import ArrowIcon from "../../assets/icons/arrowIcon";
 import TimesIcon from "../../assets/icons/timesIcon";
 import NairaIcon from "../../assets/icons/nairaIcon";
 import CartQuantity from "../../components/cartQuantity/cartQuantity";
+import Quotes from "../../components/quotes/quotes";
 
 export default function Cart() {
     const { cart, setCart } = useContext(StoreContext)
@@ -27,6 +28,7 @@ export default function Cart() {
 
     return (
         <>
+            <Quotes />
             <Header />
             <h2 className="font-bold mb-3 22xl:text-[36px] text-[24px] p-6">Cart</h2>
             <div className="flex flex-wrap md:px-8 px-6 py-[5%] md:gap-0 gap-12">
