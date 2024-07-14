@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react"
 import { useLocalStorage } from "../customHooks/useLocalStorage"
-import axios from "axios"
 import { getCategories, getProducts } from "../helper/axiosFetch"
 
 export const StoreContext = createContext([])
@@ -11,13 +10,14 @@ export default function StoreContextProvider({ children }) {
     const [products, setProducts] = useLocalStorage("products", [])
     const [categories, setCategories] = useLocalStorage("categories", [])
     const [error, setError] = useState("")
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState({ currentPage: 1, total: 12 })
     const [cat, setCat] = useState("")
 
     const getAllProducts = async () => {
-        getProducts(page, cat)
+        getProducts(page.currentPage, cat)
         .then(response => {
            setProducts(response.data.items)
+           setPage({ ...page, total: response.data.total })
         })
         .catch(error => setError(error))
     }
@@ -26,6 +26,7 @@ export default function StoreContextProvider({ children }) {
         getCategories()
         .then(response => {
            setCategories(response.data.items)
+           setPage({ ...page, total: response.data.total })
         })
         .catch(error => setError(error))
     }
@@ -33,7 +34,7 @@ export default function StoreContextProvider({ children }) {
     useEffect(() => {
         getAllProducts()
         getAllCategories()
-    }, [page, cat])
+    }, [page.currentPage, cat])
 
     return (
         <StoreContext.Provider value={{ cart, setCart, error, setError, products, page, setPage, categories, cat, setCat, wishlist, setWishlist }}>

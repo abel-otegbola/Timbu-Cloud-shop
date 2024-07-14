@@ -21,11 +21,11 @@ export default function Home () {
             <div className="overflow-x-auto px-[5%] md:block hidden">   
                 <div className="flex items-center md:justify-between 2xl:text-[28px] md:text-[18px] text-[16px] flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
 
-                    <button onClick={() => setCat("")} className={` ${ cat === "" ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>All</button>
+                    <button onClick={() => { setCat(""); setPage({ ...page, currentPage: 1})}} className={` ${ cat === "" ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>All</button>
 
                     {
                         [categories.map(item => (
-                            <button key={item.id} onClick={() => setCat(item.id)} className={`capitalize ${ cat === item.id ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>{item.name}</button>
+                            <button key={item.id} onClick={() => { setCat(item.id); setPage({ ...page, currentPage: 1})}} className={`capitalize ${ cat === item.id ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>{item.name}</button>
                         ))]
                     }
                 </div>
@@ -51,9 +51,18 @@ export default function Home () {
 
 
             <div className="flex items-center justify-center gap-4 py-8">
-                <button className={`p-2 px-5 rounded-[15px] ${ page === 1 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(1)}>1</button>
-                <button className={`p-2 px-5 rounded-[15px] ${ page === 2 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage(2)}>2</button>
-                <button className="font-semibold hover:text-primary" onClick={() => setPage(2)}>Next</button>
+                {
+                    [...Array(Math.round(page.total/12)).keys()].map(position => (
+                        <button key={position} className={`p-2 px-5 rounded-[15px] ${ page.currentPage === position + 1 ? "bg-primary hover:bg-primary/[0.8] text-white" : "bg-[#DDD] text-black hover:bg-primary hover:text-white" }`} onClick={() => setPage({ ...page, currentPage: position + 1})}>{position + 1}</button>
+                    ))
+                }
+                {
+                    products?.length < 12 
+                    ?
+                    ""
+                    :
+                    <button className="font-semibold hover:text-primary" onClick={() => setPage({ ...page, currentPage: page.currentPage + 1})}>Next</button>
+                }
             </div>
         </div>
     )

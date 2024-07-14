@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { StoreContext } from "../../context/storeContext";
 
 export default function CategoriesOverlay() {
-    const { categories, cat, setCat } = useContext(StoreContext)
+    const { categories, cat, setCat, page, setPage } = useContext(StoreContext)
 
     return (
         <div className="md:w-[200px] w-[200px] py-6 px-3 bg-white shadow-lg rounded-[10px] md:text-[16px] text-[14px]">
@@ -11,7 +11,13 @@ export default function CategoriesOverlay() {
             <div className="flex flex-col gap-3 px-7">
                 {
                     categories?.map(item => (
-                        <button key={item.id} onClick={() => setCat(item.id)} className={`flex justify-start w-full hover:text-primary capitalize ${ cat === item.id ? "text-secondary" : "" }`}>{item.name}</button>
+                        <button 
+                            key={item.id} 
+                            onClick={() => { setCat(item.id); setPage({ ...page, currentPage: page.currentPage + 1})}} 
+                            className={`flex justify-start w-full hover:text-primary capitalize ${ cat === item.id ? "text-secondary" : "" }`}
+                        >
+                            {item.name}
+                        </button>
                     ))
                 }
             </div>
