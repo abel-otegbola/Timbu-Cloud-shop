@@ -3,7 +3,7 @@
 export default function Skeleton() {
 
     return (
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between gap-2">
             <div className={`bg-slate-200 animate-pulse rounded-[15px] w-full md:h-[350px] h-[300px] max-[450px]:h-[200px]`} >
             </div>
 

@@ -26,7 +26,7 @@ export default function Home () {
             <div className="overflow-x-auto px-[5%] md:block hidden">   
                 <div className="flex items-center md:justify-between 2xl:text-[28px] md:text-[18px] text-[16px] flex-nowrap gap-6 font-medium py-8 min-w-[800px] text-nowrap">
 
-                    <button onClick={() => setSearchParams("category", "")} className={` ${ cat === "" ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>All</button>
+                    <button onClick={() => setSearchParams("category", "")} className={` ${ cat === "" || cat === null ? "bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] py-1 px-4" : "" }`}>All</button>
 
                     {
                         [categories.map(item => (
@@ -43,12 +43,11 @@ export default function Home () {
                     <>
                         <Skeleton /><Skeleton /><Skeleton /><Skeleton />
                     </>
-                    
                     :
-                    products?.filter(item => (item?.name?.indexOf(search) !== -1 )).length === 0 ?
+                    products?.length === 0 ?
                     <p className="italic py-4 text-center font-normal">No book found</p>
                     :
-                    products?.filter(item => ( item?.name?.indexOf(search) !== -1 )).map(book => (
+                    products?.map(book => (
                         <BookCard key={book.id} book={book} />
                     ))
                 }
