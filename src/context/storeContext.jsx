@@ -7,6 +7,7 @@ export const StoreContext = createContext([])
 
 export default function StoreContextProvider({ children }) {
     const [cart, setCart] = useLocalStorage("cart", [])
+    const [wishlist, setWishlist] = useLocalStorage("wishlist", [])
     const [products, setProducts] = useLocalStorage("products", [])
     const [categories, setCategories] = useLocalStorage("categories", [])
     const [error, setError] = useState("")
@@ -35,7 +36,7 @@ export default function StoreContextProvider({ children }) {
     }, [page, cat])
 
     return (
-        <StoreContext.Provider value={{ cart, setCart, error, setError, products, page, setPage, categories, cat, setCat }}>
+        <StoreContext.Provider value={{ cart, setCart, error, setError, products, page, setPage, categories, cat, setCat, wishlist, setWishlist }}>
             {children}
         </StoreContext.Provider>
     )

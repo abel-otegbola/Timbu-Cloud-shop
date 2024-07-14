@@ -11,15 +11,18 @@ import CartIcon from "../../assets/icons/cartIcon";
 import { StoreContext } from "../../context/storeContext";
 import { toggleToCart } from "../../helper/cartActions";
 import CartQuantity from "../../components/cartQuantity/cartQuantity";
+import { toggleToWishlist } from "../../helper/wishlistActions";
 
 export default function Product() {
     const pathname = useLocation().pathname;
     const [product, setProduct] = useState({})
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
-    const { cart, setCart } = useContext(StoreContext)
+    const { cart, setCart, wishlist, setWishlist } = useContext(StoreContext)
 
     const id = pathname.replace("/product/", "") || 0
+    
+    const isBookInWishlist = wishlist.map(element => element.id).indexOf(id) !== -1
     
 
     useEffect(() => { // Fetch the product using the id from the API
@@ -66,8 +69,10 @@ export default function Product() {
                             </div>
 
                             <div className="flex items-center justify-between py-6 border border-transparent border-b-gray-500/[0.3]">
-                                <button className="flex gap-2 items-center bg-secondary/[0.07] text-secondary border border-secondary w-fit rounded-[10px] px-4">
-                                    <HeartIcon className={"w-[18px]"} /> <span>Add to Wishlist</span>
+                                <button 
+                                    className={`flex gap-2 items-center bg-secondary/[0.07] text-secondary border border-secondary bg-secondary/[0.07]  w-fit rounded-[10px] px-4`}
+                                    onClick={() => toggleToWishlist(product, wishlist, setWishlist)}>
+                                    <HeartIcon className={"w-[18px]"} /> <span>{isBookInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}</span>
                                 </button>
 
                                 <div className="flex items-center gap-3">

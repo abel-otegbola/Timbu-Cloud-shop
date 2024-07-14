@@ -11,6 +11,7 @@ import Cart from './pages/cart/cart'
 import Checkout from './pages/checkout/checkout'
 import Product from './pages/product/product'
 import PaymentSuccesful from './pages/payment-successful/payment-successful'
+import Wishlist from './pages/wishlist/wishlist'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             <Route path={"/checkout"} exact element={<Checkout />} />
             <Route path={"/product/*"} exact element={<Product />} />
             <Route path={"/payment-successful"} exact element={<PaymentSuccesful />} />
+            <Route path={"/wishlist"} exact element={<Wishlist />} />
           </Routes>
           <Footer />
           </div>

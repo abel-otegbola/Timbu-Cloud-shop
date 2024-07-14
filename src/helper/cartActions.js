@@ -4,8 +4,8 @@ export const toggleToCart = (item, cart, setCart) => {
             {
                 id: item.id, 
                 name: item.name, 
-                img: `${import.meta.env.VITE_API_IMG_URL + "/" + item.photos[0].url}`, 
-                price: typeof item.current_price === "number" ? item.current_price : item?.current_price[0].NGN[0], 
+                img: typeof item.img === "string" ? item.img : `${import.meta.env.VITE_API_IMG_URL + "/" + item.photos[0].url}`, 
+                price: typeof item.price === "number" ? item.price : typeof item.current_price === "number" ? item.current_price : item?.current_price[0].NGN[0], 
                 quantity: 1
             } 
         ])
