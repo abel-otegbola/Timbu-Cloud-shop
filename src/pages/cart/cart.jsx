@@ -33,7 +33,7 @@ export default function Cart() {
                 <div className="md:w-[70%] w-full border border-transparent sm:text-[16px] text-[12px] md:border-r-[#DDD] md:pr-6">
 
                     <div className="w-full overflow-x-auto">
-                        <table className="table-auto text-left w-full min-w-[380px]">
+                        <table className="table-auto text-left w-full min-w-[550px]">
                             <thead>
                                 <tr className="font-bold 2xl:text-[26px] md:text-[20px] border border-transparent border-b-[#DDD]">
                                     <th>Product</th>
@@ -57,7 +57,7 @@ export default function Cart() {
                                                 </div>
                                             </td>
                                             <td className=" font-semibold min-w-[90px] sm:text-[16px] text-[12px] ">
-                                                <p className="flex items-center"><NairaIcon className={"w-[16px]"} /> {book.price}</p>
+                                                <p className="flex items-center"><NairaIcon className={"md:w-[16px] w-[12px]"} /> {book.price}</p>
                                             </td>
                                             <td className="px-4">
                                                 <CartQuantity book={book} cart={cart} setCart={setCart}/>
