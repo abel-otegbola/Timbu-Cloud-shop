@@ -26,7 +26,8 @@ export default function BookCard({ book }) {
                     <div style={{ backgroundImage: `url("${import.meta.env.VITE_API_IMG_URL + "/" +  book?.photos[0].url}")` }} className={`bg-cover bg-center rounded-[15px] w-full md:h-[350px] h-[300px] max-[450px]:h-[200px]`} >
                     </div>
             </Link>
-                <p className="text-primary font-semibold flex-1">{book.name}</p>
+            <p className="text-[12px] font-semibold flex-1">{book.categories[0].name}</p>
+            <p className="text-primary font-semibold flex-1">{book.name}</p>
             <div className="flex flex-col gap-2">
                 <p className="font-semibold flex items-center gap-1 text-[16px]"><NairaIcon className={"md:w-[16px] w-[14px]"}/> {book?.current_price[0].NGN[0]}</p>
             </div>
